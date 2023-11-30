@@ -34,11 +34,32 @@ class myTree {
         }
         currentNode = currentNode.right;
       }
-      console.log(currentNode.value);
     }
   }
 
   bfs() {}
+
+  dfsInorder(node, inOrder) {
+    if (node.left) this.dfsInorder(node.left, inOrder);
+
+    inOrder.push(node.value);
+
+    if (node.right) this.dfsInorder(node.right, inOrder);
+  }
+
+  dfsPreorder(node) {
+    console.log(node.value);
+
+    if (node.left) this.dfsPreorder(node.left);
+
+    if (node.right) this.dfsPreorder(node.right);
+  }
+
+  dfsPostOrder(node) {
+    if (node.left) this.dfsPostOrder(node.left);
+    if (node.right) this.dfsPostOrder(node.right);
+    console.log(node.value);
+  }
 }
 
 const tree = new myTree(9);
@@ -49,5 +70,10 @@ tree.insertNode(20);
 tree.insertNode(15);
 tree.insertNode(45);
 
-console.log(JSON.stringify(tree, null, 2));
-tree.bfs();
+let inOrder = [];
+tree.dfsInorder(tree.root, inOrder);
+// console.log(inOrder);
+
+// tree.dfsPreorder(tree.root);
+
+tree.dfsPostOrder(tree.root);
