@@ -1,15 +1,15 @@
+class queue {
+  constructor(node) {
+    this.node = node;
+    this.next = null;
+  }
+}
+
 class node {
   constructor(value) {
     this.left = null;
     this.value = value;
     this.right = null;
-  }
-}
-
-class queue {
-  constructor(node) {
-    this.node = node;
-    this.next = null;
   }
 }
 
